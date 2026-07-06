@@ -1,16 +1,14 @@
-# Marbella Hideaway Website
+# Marbella Hideaway Website — Version 1.1
 
-A simple custom static website for Marbella Hideaway.
+This is the upgraded luxury homepage using Simon's first batch of Marbella Hideaway photography.
 
-## Edit before publishing
+## Important edits still needed
 
-1. Replace the sample images in `styles.css` with your own villa photos.
-2. Replace the WhatsApp link in `index.html`:
-   `https://wa.me/440000000000`
-3. Replace the Formspree form URL:
-   `https://formspree.io/f/YOUR_FORM_ID`
-4. Update reviews, licence number, contact details and booking terms.
+1. Replace the WhatsApp number in `index.html` with Simon's real WhatsApp number.
+2. Replace the Formspree placeholder `https://formspree.io/f/YOUR_FORM_ID` with a real form endpoint.
+3. Replace placeholder reviews with real reviews.
+4. Add more bedrooms, bathrooms, evening shots and video when available.
 
 ## Deploy
 
-Upload these files to a GitHub repository, then import the repository into Vercel.
+Upload/replace these files in GitHub. Vercel will redeploy automatically.
