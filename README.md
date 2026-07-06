@@ -1,14 +1,19 @@
-# Marbella Hideaway Website — Version 1.1
+# Marbella Hideaway Premium V2
 
-This is the upgraded luxury homepage using Simon's first batch of Marbella Hideaway photography.
+Upload everything inside this folder to GitHub, including:
 
-## Important edits still needed
+- index.html
+- styles.css
+- script.js
+- assets folder
 
-1. Replace the WhatsApp number in `index.html` with Simon's real WhatsApp number.
-2. Replace the Formspree placeholder `https://formspree.io/f/YOUR_FORM_ID` with a real form endpoint.
-3. Replace placeholder reviews with real reviews.
-4. Add more bedrooms, bathrooms, evening shots and video when available.
+## Before going fully live
 
-## Deploy
+Replace these placeholders in `index.html`:
 
-Upload/replace these files in GitHub. Vercel will redeploy automatically.
+- `https://wa.me/440000000000` with Simon's WhatsApp number
+- `https://formspree.io/f/YOUR_FORM_ID` with the real enquiry form endpoint
+- Review text with real guest reviews
+- Any final dates/rates/terms
+
+Vercel will redeploy automatically after you commit the files to GitHub.
