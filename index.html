@@ -18,6 +18,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#location">Location</a>
       <a href="#experiences">Experiences</a>
+      <a href="#contact">Contact</a>
       <a class="nav-cta" href="#availability">Availability</a>
     </nav>
   </header>
@@ -34,7 +35,7 @@
         <p class="hero-copy">A private six-bedroom hideaway with a lagoon pool, tropical gardens and space for up to 15 guests — moments from Marbella Club, Puente Romano and the beach.</p>
         <div class="hero-actions">
           <a class="button primary" href="#availability">Check availability</a>
-          <a class="button ghost" href="https://wa.me/447000000000?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">WhatsApp Simon</a>
+          <a class="button ghost" href="https://wa.me/34672249724?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">WhatsApp Simon</a>
         </div>
       </div>
       <a class="scroll-cue" href="#intro">Scroll</a>
@@ -123,13 +124,16 @@
       <div class="location-card reveal">
         <p class="eyebrow dark">Location</p>
         <h2>Golden Mile location. Everything close.</h2>
-        <p>Walk to the beach, Marbella Club and Puente Romano. Puerto Banús is a short taxi ride away, and Málaga Airport is around 30 minutes by car.</p>
+        <p>Urbanización La Carolina, Calle Margarita No. 48, Marbella, 29602. Walk to the beach, Marbella Club and Puente Romano. Puerto Banús is a short taxi ride away, and Málaga Airport is around 30 minutes by car.</p><a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Urbanizacion%20La%20Carolina%2C%20Calle%20Margarita%2048%2C%20Marbella%2029602" target="_blank" rel="noreferrer">Open in Google Maps</a>
       </div>
-      <div class="location-list reveal">
-        <div><strong>10 min</strong><span>Beach walk</span></div>
-        <div><strong>10 min</strong><span>Marbella Club</span></div>
-        <div><strong>10 min</strong><span>Puente Romano</span></div>
-        <div><strong>5 min</strong><span>Puerto Banús by car</span></div>
+      <div class="location-map reveal">
+        <iframe title="Map to Marbella Hideaway" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Urbanizacion%20La%20Carolina%2C%20Calle%20Margarita%2048%2C%20Marbella%2029602&output=embed"></iframe>
+        <div class="location-list">
+          <div><strong>10 min</strong><span>Beach walk</span></div>
+          <div><strong>10 min</strong><span>Marbella Club</span></div>
+          <div><strong>10 min</strong><span>Puente Romano</span></div>
+          <div><strong>5 min</strong><span>Puerto Banús by car</span></div>
+        </div>
       </div>
     </section>
 
@@ -168,7 +172,7 @@
           <p class="eyebrow dark">Enquiry</p>
           <h3>Your Marbella dates</h3>
           <p id="selectedDatesText">Select an arrival and departure date on the calendar.</p>
-          <form action="mailto:info@marbellahideaway.com" method="post" enctype="text/plain" id="enquiryForm">
+          <form action="mailto:simon@marbellahideaway.com" method="post" enctype="text/plain" id="enquiryForm">
             <input name="name" placeholder="Name" required />
             <input name="email" type="email" placeholder="Email" required />
             <input name="dates" id="datesInput" placeholder="Preferred dates" />
@@ -176,22 +180,42 @@
             <textarea name="message" id="messageInput" placeholder="Tell us about your trip"></textarea>
             <div class="form-actions">
               <button class="button primary" type="submit">Send enquiry</button>
-              <a class="button outline" id="whatsappDates" href="https://wa.me/?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">WhatsApp Simon</a>
+              <a class="button outline" id="whatsappDates" href="https://wa.me/34672249724?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">WhatsApp Simon</a>
             </div>
           </form>
           <small>Tip: update your iCloud calendar and this section will update automatically after deployment.</small>
         </div>
       </div>
     </section>
+
+    <section class="contact-strip section" id="socials">
+      <div class="section-heading reveal">
+        <p class="eyebrow dark">Contact</p>
+        <h2>Speak to Simon directly.</h2>
+        <p>For availability, concierge extras or anything you want arranged before arrival, message Marbella Hideaway directly.</p>
+      </div>
+      <div class="contact-grid reveal">
+        <a href="https://wa.me/34672249724?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer"><span>WhatsApp</span><strong>+34 672 24 97 24</strong></a>
+        <a href="mailto:simon@marbellahideaway.com"><span>Email</span><strong>simon@marbellahideaway.com</strong></a>
+        <a href="https://www.instagram.com/marbellahideaway" target="_blank" rel="noreferrer"><span>Instagram</span><strong>@marbellahideaway</strong></a>
+        <a href="https://www.facebook.com/marbellahideaway" target="_blank" rel="noreferrer"><span>Facebook</span><strong>/marbellahideaway</strong></a>
+        <a href="https://www.tiktok.com/@marbellahideaway" target="_blank" rel="noreferrer"><span>TikTok</span><strong>@marbellahideaway</strong></a>
+      </div>
+    </section>
   </main>
 
-  <footer class="footer">
-    <div><strong>Marbella Hideaway</strong><span>Luxury villa on Marbella’s Golden Mile</span></div>
-    <a href="#top">Back to top</a>
+  <footer class="footer" id="contact">
+    <div><strong>Marbella Hideaway</strong><span>Luxury villa on Marbella’s Golden Mile</span><span>Urban. La Carolina, Calle Margarita No. 48, Marbella, 29602</span><span><a href="mailto:simon@marbellahideaway.com">simon@marbellahideaway.com</a> · <a href="tel:+34672249724">+34 672 24 97 24</a></span></div>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/marbellahideaway" target="_blank" rel="noreferrer">Instagram</a>
+      <a href="https://www.facebook.com/marbellahideaway" target="_blank" rel="noreferrer">Facebook</a>
+      <a href="https://www.tiktok.com/@marbellahideaway" target="_blank" rel="noreferrer">TikTok</a>
+      <a href="#top">Back to top</a>
+    </div>
   </footer>
 
   <div class="lightbox" aria-hidden="true"><button aria-label="Close gallery">×</button><img alt="Gallery image" /></div>
-  <a class="whatsapp" href="https://wa.me/?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">WhatsApp</a>
+  <a class="whatsapp" href="https://wa.me/34672249724?text=Hi%20Simon%2C%20I%27d%20like%20to%20enquire%20about%20Marbella%20Hideaway" target="_blank" rel="noreferrer">Chat with Simon</a>
   <script src="script.js"></script>
 </body>
 </html>
