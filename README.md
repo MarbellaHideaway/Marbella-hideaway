@@ -1,5 +1,3 @@
-# Marbella Hideaway Premium V6
+# Marbella Hideaway Premium V7
 
-Updated copy, hero text, contact icons, social links, address and Tourist Licence / Licencia de Turismo: VFT/MA/19495.
-
-Upload everything inside this folder to the root of the GitHub repository.
+Updated hero alignment, WhatsApp wording, removed floating chat box, and refined intro section alignment.
