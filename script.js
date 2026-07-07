@@ -1,36 +1,25 @@
-const header=document.querySelector('.site-header');
-const onScroll=()=>header.classList.toggle('scrolled',window.scrollY>40);
-window.addEventListener('scroll',onScroll);onScroll();
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.14});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const lb=document.querySelector('.lightbox');
-const lbImg=lb.querySelector('img');
-document.querySelectorAll('.gallery-item img').forEach(img=>{img.parentElement.addEventListener('click',()=>{lbImg.src=img.src;lbImg.alt=img.alt;lb.classList.add('open');lb.setAttribute('aria-hidden','false')})});
-lb.querySelector('button').addEventListener('click',()=>{lb.classList.remove('open');lb.setAttribute('aria-hidden','true')});
-lb.addEventListener('click',e=>{if(e.target===lb){lb.classList.remove('open');lb.setAttribute('aria-hidden','true')}});
+const rooms=[
+ {id:'master',name:'Master Suite',label:'The Villa’s Finest Bedroom',meta:'Ground Floor • Super King • En-suite • Private Terrace • Pool View',desc:'The luxurious Master Suite enjoys direct access to a private terrace overlooking the lagoon-style swimming pool and tropical gardens. Featuring a sumptuous Super King bed, elegant furnishings and a spacious en-suite bathroom, it provides the perfect sanctuary after a day in the Marbella sunshine.',features:['🛏 Super King Bed','🚿 Luxury En-suite','🌴 Private Terrace','🏊 Pool Views','❄️ Air Conditioning','📶 High-Speed Wi-Fi'],count:7},
+ {id:'bedroom-two',name:'Bedroom Two',label:'Pool View Suite',meta:'Ground Floor • Super King • En-suite • Terrace Access',desc:'A spacious Super King bedroom finished in warm contemporary tones, offering generous proportions, a luxurious en-suite bathroom and beautiful views across the gardens.',features:['🛏 Super King Bed','🚿 En-suite Bathroom','🌴 Garden Views','☀️ Terrace Access','❄️ Air Conditioning','📶 Wi-Fi'],count:8},
+ {id:'bedroom-three',name:'Bedroom Three',label:'Deluxe Suite',meta:'Ground Floor • Super King • En-suite • Spacious Layout',desc:'One of the villa’s largest bedrooms, complete with a Super King bed, elegant décor and an impressive en-suite bathroom. The generous floor space makes it ideal for longer stays or guests wanting a little extra luxury.',features:['🛏 Super King Bed','🚿 En-suite Bathroom','🌿 Spacious Layout','❄️ Air Conditioning','📶 Wi-Fi','🧳 Generous Storage'],count:8},
+ {id:'bedroom-four',name:'Bedroom Four',label:'Garden View Room',meta:'First Floor • Double • Garden View • Bathroom Access',desc:'A beautifully bright double bedroom overlooking the mature tropical gardens, with calm interiors, comfortable furnishings and a peaceful atmosphere for relaxed Marbella mornings.',features:['🛏 Double Bed','🌴 Garden Views','❄️ Air Conditioning','📶 Wi-Fi','🛁 Bathroom Access','☀️ Natural Light'],count:7},
+ {id:'bedroom-five',name:'Bedroom Five',label:'Twin Balcony Room',meta:'First Floor • Twin Room • Private Balcony • Garden View',desc:'A bright and spacious twin bedroom with two comfortable single beds and French doors opening onto a private first-floor balcony. Perfect for friends sharing or younger members of the group.',features:['🛏 Two Single Beds','☀️ Private Balcony','🌴 Garden Views','❄️ Air Conditioning','📶 Wi-Fi','🛋 Extra Space'],count:4},
+ {id:'garden-room',name:'Garden Room',label:'Private Garden Suite',meta:'Garden Level • Twin Room • En-suite • Private Setting',desc:'Located on the garden level, this peaceful twin room offers extra privacy and its own contemporary en-suite bathroom. Ideal for guests seeking a quieter space while remaining only moments from the pool and gardens.',features:['🛏 Two Single Beds','🚿 En-suite Bathroom','🌿 Garden Level','❄️ Air Conditioning','📶 Wi-Fi','🌴 Private Setting'],count:6,placeholders:true}
+];
+const roomsEl=document.getElementById('rooms');
+let allImages=[];let currentIndex=0;
+function imgPath(id,i){return `assets/bedrooms/${id}/${id}-${String(i).padStart(2,'0')}.webp`}
+rooms.forEach(room=>{
+ const imgs=Array.from({length:room.count},(_,i)=>imgPath(room.id,i+1)); allImages.push(...imgs);
+ const section=document.createElement('article'); section.className='room'; section.id=room.id;
+ section.innerHTML=`<div class="room-media"><img class="main-img" src="${imgs[0]}" alt="${room.name}" loading="lazy"><div class="thumbs">${imgs.map((src,i)=>`<img src="${src}" alt="${room.name} image ${i+1}" loading="lazy" ${room.id==='garden-room'&&i>0?'class="placeholder"':''}>`).join('')}</div></div><div class="room-copy"><span class="eyebrow">${room.label}</span><h3>${room.name}</h3><div class="meta">${room.meta}</div><p>${room.desc}</p><div class="features">${room.features.map(f=>`<span>${f}</span>`).join('')}</div>${room.id==='garden-room'?'<p class="meta" style="margin-top:22px">Five additional Garden Room photos have been reserved and can be added when ready.</p>':''}</div>`;
+ roomsEl.appendChild(section);
+});
 
-const calendarGrid=document.getElementById('calendarGrid');
-const calendarTitle=document.getElementById('calendarTitle');
-const calendarStatus=document.getElementById('calendarStatus');
-const prevMonth=document.getElementById('prevMonth');
-const nextMonth=document.getElementById('nextMonth');
-const selectedDatesText=document.getElementById('selectedDatesText');
-const datesInput=document.getElementById('datesInput');
-const messageInput=document.getElementById('messageInput');
-const whatsappDates=document.getElementById('whatsappDates');
-let busyEvents=[];
-let viewDate=new Date();
-let selection=[];
-const fmt=(d)=>d.toISOString().slice(0,10);
-const nice=(d)=>d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-const atMid=(d)=>new Date(d.getFullYear(),d.getMonth(),d.getDate());
-const parseISO=(s)=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d)};
-function isBusy(date){const iso=fmt(new Date(Date.UTC(date.getFullYear(),date.getMonth(),date.getDate())));return busyEvents.some(e=>iso>=e.start&&iso<e.end)}
-function isInSelection(date){if(!selection.length)return false;const t=atMid(date).getTime();if(selection.length===1)return t===atMid(selection[0]).getTime();const a=atMid(selection[0]).getTime(),b=atMid(selection[1]).getTime();return t>=Math.min(a,b)&&t<=Math.max(a,b)}
-function renderCalendar(){if(!calendarGrid)return;calendarGrid.innerHTML='';const year=viewDate.getFullYear(),month=viewDate.getMonth();calendarTitle.textContent=new Date(year,month,1).toLocaleDateString('en-GB',{month:'long',year:'numeric'});['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(d=>{const el=document.createElement('div');el.className='day-name';el.textContent=d;calendarGrid.appendChild(el)});let first=new Date(year,month,1);let offset=(first.getDay()+6)%7;for(let i=0;i<offset;i++){const e=document.createElement('div');e.className='calendar-day empty';calendarGrid.appendChild(e)}const days=new Date(year,month+1,0).getDate();const today=atMid(new Date());for(let day=1;day<=days;day++){const date=new Date(year,month,day);const el=document.createElement('button');el.type='button';el.className='calendar-day';el.textContent=day;const past=atMid(date)<today;if(past)el.classList.add('past');if(isBusy(date))el.classList.add('booked');if(isInSelection(date))el.classList.add(selection.length===1?'selected':'range');el.disabled=past||isBusy(date);el.addEventListener('click',()=>selectDate(date));calendarGrid.appendChild(el)}}
-function selectDate(date){if(!selection.length||selection.length===2){selection=[date]}else{if(date<selection[0])selection=[date,selection[0]];else selection.push(date)}updateSelected();renderCalendar()}
-function updateSelected(){if(!selectedDatesText)return;if(!selection.length){selectedDatesText.textContent='Select an arrival and departure date on the calendar.';return}if(selection.length===1){selectedDatesText.textContent=`Arrival selected: ${nice(selection[0])}. Now choose your departure date.`;datesInput.value=nice(selection[0]);return}const [a,b]=selection;const nights=Math.round((atMid(b)-atMid(a))/86400000);const label=`${nice(a)} to ${nice(b)} (${nights} night${nights===1?'':'s'})`;selectedDatesText.textContent=label;datesInput.value=label;messageInput.value=`Hi Simon, I’d like to enquire about Marbella Hideaway from ${nice(a)} to ${nice(b)}.`;const wa=`Hi Simon, I’d like to enquire about Marbella Hideaway from ${nice(a)} to ${nice(b)}.`;whatsappDates.href=`https://wa.me/34672249724?text=${encodeURIComponent(wa)}`}
-async function loadAvailability(){if(!calendarGrid)return;try{const res=await fetch('/api/availability');if(!res.ok)throw new Error('Calendar unavailable');const data=await res.json();busyEvents=data.events||[];calendarStatus.textContent=`Synced ${busyEvents.length} booking${busyEvents.length===1?'':'s'}`;renderCalendar()}catch(e){calendarStatus.textContent='Calendar preview loaded — live sync needs Vercel API deployment';busyEvents=[];renderCalendar()}}
-prevMonth&&prevMonth.addEventListener('click',()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()-1,1);renderCalendar()});
-nextMonth&&nextMonth.addEventListener('click',()=>{viewDate=new Date(viewDate.getFullYear(),viewDate.getMonth()+1,1);renderCalendar()});
-loadAvailability();
+document.querySelectorAll('.thumbs img').forEach(img=>{img.addEventListener('click',e=>{const main=e.target.closest('.room-media').querySelector('.main-img'); main.src=e.target.src;});});
+document.querySelectorAll('.main-img,.masonry img').forEach(img=>img.addEventListener('click',()=>openLightbox(img.src)));
+const lb=document.getElementById('lightbox'), lbImg=document.getElementById('lightboxImg');
+function openLightbox(src){allImages=[...document.querySelectorAll('.main-img,.thumbs img,.masonry img')].map(i=>i.src);currentIndex=allImages.indexOf(src); if(currentIndex<0)currentIndex=0; lbImg.src=allImages[currentIndex]; lb.classList.add('open');}
+function move(n){currentIndex=(currentIndex+n+allImages.length)%allImages.length; lbImg.src=allImages[currentIndex];}
+document.getElementById('close').onclick=()=>lb.classList.remove('open');document.getElementById('prev').onclick=()=>move(-1);document.getElementById('next').onclick=()=>move(1);document.addEventListener('keydown',e=>{if(!lb.classList.contains('open'))return;if(e.key==='Escape')lb.classList.remove('open');if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1);});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60));
