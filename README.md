@@ -1,11 +1,5 @@
-# Marbella Hideaway Premium V5
+# Marbella Hideaway Premium V6
 
-Added:
-- Simon's WhatsApp number
-- Email link
-- Instagram, Facebook and TikTok links
-- Full villa address
-- Google Maps embed and Google Maps button
-- Updated contact/footer section
+Updated copy, hero text, contact icons, social links, address and Tourist Licence / Licencia de Turismo: VFT/MA/19495.
 
-Upload everything inside this folder to GitHub, including `assets`, `api`, `index.html`, `styles.css`, `script.js`, `package.json` and `vercel.json`.
+Upload everything inside this folder to the root of the GitHub repository.
