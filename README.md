@@ -1,1 +1,1 @@
-Marbella Hideaway V9 Fixed. Upload the CONTENTS of this folder to the ROOT of GitHub. The root must contain index.html, styles.css, script.js and assets/.
+Marbella Hideaway Premium V10 Clean. Upload the CONTENTS of this folder to the ROOT of GitHub. The site now uses one simple /assets folder for all images. Root must contain index.html, styles.css, script.js and assets/.
