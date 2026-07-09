@@ -1,11 +1,1 @@
-# Marbella Hideaway Premium V8
-
-Upload everything inside this folder to the root of the GitHub repository.
-
-Important files/folders:
-- index.html
-- styles.css
-- script.js
-- assets/
-
-Do not upload the folder itself as a subfolder. Upload the contents.
+Marbella Hideaway V9 Fixed. Upload the CONTENTS of this folder to the ROOT of GitHub. The root must contain index.html, styles.css, script.js and assets/.
